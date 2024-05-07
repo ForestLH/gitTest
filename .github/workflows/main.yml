@@ -1,0 +1,19 @@
+name: Test
+
+on:
+  push:
+    branches:
+      - master #只在master推送时执行
+  pull_request:
+    branches:
+      - master
+      
+
+jobs:
+  my_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Use Secret
+        run: echo "Secret is set and being used:$MY_SECRET"
+        env:
+          MY_SECRET: ${{ secrets.MY_SECRET }}
